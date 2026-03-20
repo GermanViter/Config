@@ -1,59 +1,63 @@
 return {
   {
     "williamboman/mason.nvim",
+    lazy = false,
     config = function()
       require("mason").setup()
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",       -- Lua
-          "pyright",      -- Python
-          "ts_ls",        -- JavaScript/TypeScript
-          "jdtls",        -- Java
-          "rust_analyzer", -- Rust
-          "clangd",       -- C/C++
-          "omnisharp",    -- C#
-          "marksman",     -- Markdown
-        },
-      })
-    end,
+    lazy = false,
+    opts = {
+      auto_install = true,
+    },
   },
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+    },
+    lazy = false,
     config = function()
+      local capabilities = {}
+      local has_cmp, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+      if has_cmp then
+        capabilities = cmp_lsp.default_capabilities()
+      end
+
       local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({})
-      lspconfig.ts_ls.setup({})
-      -- Use LspAttach autocmd to set up keymaps globally
-      vim.api.nvim_create_autocmd("LspAttach", {
-        callback = function(args)
-          local opts = { buffer = args.buf }
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-          vim.keymap.set("n", "<leader>g", vim.lsp.buf.definition, {})
-          vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-        end,
+
+      local on_attach = function(_, bufnr)
+        local opts = { buffer = bufnr }
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+      end
+
+      -- TypeScript/JavaScript
+      lspconfig.ts_ls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
       })
 
-      -- Servers to enable (using the new Neovim 0.11+ API)
-      local servers = {
-        "lua_ls",
-        "pyright",
-        "ts_ls",
-        "jdtls",
-        "rust_analyzer",
-        "clangd",
-        "omnisharp",
-        "marksman",
-      }
+      -- Ruby
+      lspconfig.solargraph.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
 
-      -- Optional: Override default config for specific servers
-      -- For example, to remove "Global vim" warnings in Lua files
-      vim.lsp.config("lua_ls", {
+      -- HTML
+      lspconfig.html.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+
+      -- Lua
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
         settings = {
           Lua = {
             diagnostics = {
@@ -62,11 +66,6 @@ return {
           },
         },
       })
-
-      -- Enable the servers
-      for _, server in ipairs(servers) do
-        vim.lsp.enable(server)
-      end
     end,
   },
 }

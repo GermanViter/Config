@@ -28,15 +28,15 @@ $time\
 [ ](fg:pink)\
 $line_break$character"""
 
-palette = 'catppuccin_mocha'
+palette = 'catppuccin-mocha'
 
 
 
-[palettes.catppuccin_mocha]
+[palettes.catppuccin-mocha]
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"
 pink = "#f5c2e7"
-orange = "#cba6f7"
+mauve = "#cba6f7"
 red = "#f38ba8"
 maroon = "#eba0ac"
 peach = "#fab387"

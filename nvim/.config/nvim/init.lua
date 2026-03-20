@@ -10,6 +10,8 @@ vim.opt.shortmess:append("atIc")
 vim.opt.cmdheight = 2
 vim.opt.report = 9999
 
+
+
 -- Suppress warnings, only show errors
 vim.notify = function(msg, log_level, _)
 	if log_level == vim.log.levels.ERROR then
