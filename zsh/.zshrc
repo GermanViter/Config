@@ -16,6 +16,10 @@ source $ZSH/oh-my-zsh.sh
 #starship
 eval "$(starship init zsh)"
 
+#tmux
+
+alias tms='tmux attach-session -t $1'
+
 #fzf
 source <(fzf --zsh)
 alias fzshow='fzf --preview="bat --color=always {}"'
@@ -34,3 +38,7 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 25)
 #zoxide
 eval "$(zoxide init zsh)"
 alias cd='zi'
+
+# for nvim
+export NVIM='~/.dotfiles/nvim/.config'
+alias bakvim='$NVIM/nvim/ $NVIM/nvim1.bak && mv $NVIM/nvim1.bak/ $NVIM/nvim'
