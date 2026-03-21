@@ -5,7 +5,14 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
-vim.wo.relativenumber = true
+
+-- Neovim UI Settings
+vim.opt.number = true -- Show line numbers
+vim.opt.relativenumber = true-- Relative line numbers for easy line navigation
+vim.opt.cursorline = true -- Highlight the current line
+vim.opt.signcolumn = "yes" -- Always show sign column (for gitsigns, LSP) to avoid text shifting
+
+
 
 -- Suppress startup intro and common messages
 vim.opt.shortmess:append("I")
