@@ -26,6 +26,22 @@ return {
         capabilities = cmp_lsp.default_capabilities()
       end
 
+      -- Configure diagnostics
+      vim.diagnostic.config({
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        update_in_insert = true,
+        severity_sort = true,
+      })
+
+      -- Change diagnostic signs to icons
+      local signs = { Error = " ", Warn = " ", Hint = "󰌵", Info = " " }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+      end
+
       local lspconfig = require("lspconfig")
 
       local on_attach = function(_, bufnr)
@@ -34,6 +50,12 @@ return {
         vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
         vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+
+        -- Diagnostic keymaps
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+        vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+        vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
       end
 
       -- TypeScript/JavaScript
