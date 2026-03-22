@@ -30,7 +30,7 @@ return {
 
     for i = 1, 9 do
       table.insert(keys, {
-        "<F" .. i .. ">",
+        "<C-" .. i .. ">",
         function()
           require("harpoon"):list():select(i)
         end,
