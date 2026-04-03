@@ -27,6 +27,7 @@ alias fzvim='nvim $(fzf --preview="bat --color=always {}")'
 
 #gemini sync 
 alias gsync='python3 /Users/germaviter/.gemini/scripts/obsidian_sync.py'
+alias claw='ollama launch openclaw --model glm-5:cloud'
 
 export PATH=$PATH:$HOME/go/bin
 export PATH="$PATH:/opt/homebrew/lib/python3.14/site-packages/pip"
