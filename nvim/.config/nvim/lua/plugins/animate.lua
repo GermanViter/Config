@@ -1,4 +1,4 @@
 return {
-  "nvim-mini/mini.animate",
-  enable = false,
+  "echasnovski/mini.animate",
+  enabled = false,
 }
