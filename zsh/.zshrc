@@ -1,4 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
+DISABLE_AUTO_TITLE="true"
 
 ZSH_THEME=""
 
@@ -13,6 +14,8 @@ cmdhist() {
 linec() {
     find . -type f -exec wc -l {} + | awk '{total += $1} END {print total}' 
 }
+
+alias claude='ollama launch claude --model gemma4:31b-cloud'
 
 export EDITOR='nvim'
 
