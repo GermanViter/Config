@@ -1,5 +1,7 @@
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-f>", "<C-f>zz")
+vim.keymap.set("n", "<C-b>", "<C-b>zz")
 
 -- use control hjkl to move current line up and down
 vim.keymap.set("n", "<C-k>", ":m .-2<CR>==")

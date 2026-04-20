@@ -34,6 +34,7 @@ source <(fzf --zsh)
 alias fzshow='fzf --preview="bat --color=always {}"'
 alias fzvim='nvim $(fzf --preview="bat --color=always {}")'
 
+
 #gemini sync 
 alias gsync='python3 /Users/germaviter/.gemini/scripts/obsidian_sync.py'
 alias claw='ollama launch openclaw --model glm-5:cloud'
@@ -50,4 +51,14 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 25)
 #zoxide
 eval "$(zoxide init zsh)"
 alias cd='zi'
+
+#eza
+alias ls='eza --icons=always -1'
+
+
+# bat
+alias cat='bat'
+export BAT_THEME='Catppuccin Mocha'
+
+
 
