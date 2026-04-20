@@ -30,7 +30,34 @@ $line_break$character"""
 
 palette = 'catppuccin-mocha'
 
-
+[palettes.matte-black]
+base = "#1a1a1a"
+mantle = "#111111"
+crust = "#0d0d0d"
+surface0 = "#262626"
+surface1 = "#333333"
+surface2 = "#404040"
+overlay0 = "#4d4d4d"
+overlay1 = "#595959"
+overlay2 = "#666666"
+text = "#e6e6e6"
+subtext0 = "#d9d9d9"
+subtext1 = "#cccccc"
+peach = "#333333"
+green = "#404040"
+teal = "#4d4d4d"
+blue = "#595959"
+purple = "#666666"
+pink = "#737373"
+rosewater = "#e6e6e6"
+flamingo = "#d9d9d9"
+mauve = "#bfbfbf"
+red = "#b3b3b3"
+maroon = "#a6a6a6"
+yellow = "#b3b3b3"
+sky = "#8c8c8c"
+sapphire = "#808080"
+lavender = "#999999"
 
 [palettes.catppuccin-mocha]
 rosewater = "#f5e0dc"
