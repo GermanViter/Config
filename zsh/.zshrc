@@ -58,7 +58,7 @@ alias ls='eza --icons=always -1'
 
 # bat
 alias cat='bat'
-export BAT_THEME='Catppuccin Mocha'
+export BAT_THEME='rose-pine'
 
 
 
