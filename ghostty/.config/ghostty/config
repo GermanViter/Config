@@ -228,7 +228,9 @@ confirm-close-surface = false
 #    The `macos-icon-ghost-color` and `macos-icon-screen-color`
 #    configurations are required for this style.
 # 
-macos-icon = official
+macos-icon = xray
+macos-icon-ghost-color = green
+macos-icon-screen-color = black
 
 # The opacity level (opposite of transparency) of the background. A value of
 # 1 is fully opaque and a value of 0 is fully transparent. A value less than 0
