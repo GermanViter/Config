@@ -21,7 +21,7 @@ To apply these configurations to a new system:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/dotfiles.git ~
+   git clone https://github.com/your-username/dotfiles.git ~/.dotfiles
    ```
 2. **If you dont't want git tracking, you can remove the .git directory**
    ```bash
