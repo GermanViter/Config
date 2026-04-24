@@ -6,6 +6,14 @@ Personal configuration files and environment settings for macOS and Linux.
 
 This repository uses a modular structure where each directory represents an application or tool. A central setup script manages the creation of symbolic links from the repository to your home directory and `~/.config` folder, and handles system dependencies via Homebrew.
 
+## Screenshots
+
+<p align="center">
+  <img src="assets/screenshot1.png" width="400" />
+  <img src="assets/screenshot2.png" width="400" />
+  <img src="assets/screenshot3.png" width="400" />
+</p>
+
 ## Managed Applications
 
 - **Terminal/Shell**: [Fish](https://fishshell.com/), [Zsh](https://www.zsh.org/), [Tmux](https://github.com/tmux/tmux)
