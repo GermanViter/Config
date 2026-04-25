@@ -1,5 +1,8 @@
 # Dotfiles
 
+Personal configuration files and environment settings for macOS and Linux. 
+> Some apps work better with MacOs like AeroSpace, Karabiner and Raycast so if you are on Linux, just delete those folders before running the script. The rest of the configs should work fine on both platforms.
+
 ## Contents
 - [Overview](#overview)
 - [Screenshots](#screenshots)
@@ -33,7 +36,7 @@ This repository uses a modular structure where each directory represents an appl
 - **Package Management**: [Homebrew](https://brew.sh/) (via Brewfile)
 - **Others**: Raycast, Macmon, Envman, JGit
 
-## dependencies
+## Dependencies
 - Homebrew (for package management)
 - Git (for cloning the repository)
 - Zsh (for shell configurations)
