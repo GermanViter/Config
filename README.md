@@ -32,10 +32,18 @@ This repository uses a modular structure where each directory represents an appl
 - **Terminal/Shell**: [Fish](https://fishshell.com/), [Zsh](https://www.zsh.org/), [Tmux](https://github.com/tmux/tmux)
 - **Editors**: [Neovim](https://neovim.io/) (LazyVim), [Zed](https://zed.dev/)
 - **Prompt**: [Starship](https://starship.rs/)
-- **UI/Window Management**: [Aerospace](https://github.com/nikitabobko/AeroSpace), [Ghostty](https://ghostty.org/), [Kitty](https://sw.kovidgoyal.net/kitty/), [Karabiner](https://karabiner-elements.pqrs.org/)
+- **UI/Window Management**: [Aerospace](https://github.com/nikitabobko/AeroSpace), [Ghostty](https://ghostty.org/), [Kitty](https://sw.kovidgoyal.net/kitty/)
 - **CLI Tools**: [Fastfetch](https://github.com/fastfetch-cli/fastfetch), [Bat](https://github.com/sharkdp/bat), [Yazi](https://github.com/sxyazi/yazi), [Neofetch](https://github.com/dylanaraps/neofetch)
 - **Package Management**: [Homebrew](https://brew.sh/) (via Brewfile)
-- **Others**: Raycast, Macmon, Envman, JGit
+- **Others**: Macmon, Envman, JGit
+
+## Local Overrides
+
+To add private configurations (like work-specific paths or API keys) without committing them to the repository, use local override files:
+- **Zsh**: Create `~/.zshrc.local`
+- **Brew**: Create `~/.Brewfile.local` (Note: ensure your script supports this if you implement it)
+
+These files are ignored by Git.
 
 ## Dependencies
 - Homebrew (for package management)
@@ -52,32 +60,33 @@ To apply these configurations to a new system:
    ```
 
 2. **Run the setup script:**
-   The script can be run from any directory and supports several options:
+   The script uses [GNU Stow](https://www.gnu.org/software/stow/) to manage symlinks. It will automatically detect packages in the repository and link them to your home directory.
+
    ```bash
+   # Install dependencies (Homebrew & Stow) first if needed, 
+   # or run with --brew to handle it via the script.
    ~/.dotfiles/scripts/setup_symlinks.sh --brew
    ```
 
 ### Script Options
 
-- `(no arguments)`: Creates symlinks and backs up existing files.
-- `--brew`: Installs all packages listed in the `Brewfile` using Homebrew.
+- `(no arguments)`: Creates symlinks using `stow`.
+- `--brew`: Installs all packages listed in `brew/.Brewfile` using Homebrew.
 - `--dry-run`: Simulates the process without making any changes.
-- `--unlink`: Removes the symlinks and restores backups if available.
+- `--unlink`: Removes the symlinks (unstow).
 - `--help`: Displays help information.
 
 ## How it Works
 
-The `scripts/setup_symlinks.sh` script is designed to be portable and robust:
+The `scripts/setup_symlinks.sh` script is a wrapper around `stow`:
 
-1. **Location Agnostic**: It automatically finds the root of the dotfiles repository.
-2. **Automatic Backups**: If a real file or directory exists where a symlink should be, it is backed up to `~/.dotfiles_backup/` before being replaced.
-3. **Smart Linking**:
-   - **`.config` folders**: Links contents of `app/.config/` into `~/.config/`.
-   - **Top-level dotfiles**: Links hidden files (e.g., `.zshrc`) into `~/`.
-   - **Special files**: Symlinks the root `Brewfile` to `~/.Brewfile`.
-4. **Homebrew Integration**: The `--brew` flag uses `brew bundle` to install all taps, brews, and casks defined in the `Brewfile`.
-5. **Logging**: Uses color-coded output to clearly show what was linked, skipped, or backed up.
-6. **Idempotency**: Safe to run multiple times; it will skip already correct links.
+1. **Modular Packages**: Each top-level directory (e.g., `nvim`, `zsh`, `fish`) is treated as a "stow package".
+2. **Mirroring**: Stow mirrors the internal structure of these directories into your `$HOME`.
+   - `zsh/.zshrc` becomes `~/.zshrc`
+   - `nvim/.config/nvim/` becomes `~/.config/nvim/`
+3. **Safety**: Stow will not overwrite existing real files. It only creates symlinks. If a file already exists, it will report a conflict.
+4. **Homebrew Integration**: The `--brew` flag uses `brew bundle` on the `brew/.Brewfile`.
+
 
 ## Troubleshooting
 - If you encounter issues with symlinks, check the backup directory for any files that were moved.

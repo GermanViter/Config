@@ -1,4 +1,19 @@
-*.json
+# OS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Backups and temporary files
+*.bak
+*.swp
+*~
+.dotfiles_backup/
+
+# Configuration files
+# Allow JSON configs but ignore heavy/noisy ones if needed
+# !*.json 
 node_modules/
-raycast/
-karabiner/
+
+# Local/Private overrides
+.zshrc.local
+.Brewfile.local

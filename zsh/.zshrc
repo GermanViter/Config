@@ -1,35 +1,62 @@
+# --- Homebrew Setup ---
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 # --- Shell Configuration & Oh-My-Zsh ---
 export ZSH="$HOME/.oh-my-zsh"
 DISABLE_AUTO_TITLE="true"
 ZSH_THEME=""
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 export ZSH_DISABLE_COMPFIX=true
-source $ZSH/oh-my-zsh.sh
-source /opt/homebrew/Cellar/zsh-autocomplete/
+
+# Source Oh-My-Zsh if it exists
+if [[ -f $ZSH/oh-my-zsh.sh ]]; then
+    source $ZSH/oh-my-zsh.sh
+fi
+
+# Source Homebrew-installed plugins dynamically
+if command -v brew >/dev/null 2>&1; then
+    BREW_PREFIX=$(brew --prefix)
+    [[ -f "$BREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh" ]] && source "$BREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+fi
 
 # --- Editor ---
 export EDITOR='nvim'
 alias vi='nvim'
 
 # --- Starship ---
-export STARSHIP_CONFIG=~/.dotfiles/starship/.config/starship.toml
-eval "$(starship init zsh)"
+# Use the symlinked path in ~/.config for portability
+export STARSHIP_CONFIG="$HOME/.config/starship.toml"
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init zsh)"
+fi
 
 # --- Zoxide (Navigation) ---
-eval "$(zoxide init zsh)"
-alias cd='zi'
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+    alias cd='zi'
+fi
 
 # --- Eza (Modern ls) ---
-alias ls='eza --icons=always -1'
+if command -v eza >/dev/null 2>&1; then
+    alias ls='eza --icons=always -1'
+fi
 
 # --- Bat (Modern cat) ---
 export BAT_THEME='rose-pine'
-alias cat='bat'
+if command -v bat >/dev/null 2>&1; then
+    alias cat='bat'
+fi
 
 # --- Fzf (Fuzzy Finder) ---
-source <(fzf --zsh)
-alias fzshow='fzf --preview="bat --color=always {}"'
-alias fzvim='nvim $(fzf --preview="bat --color=always {}")'
+if command -v fzf >/dev/null 2>&1; then
+    source <(fzf --zsh)
+    alias fzshow='fzf --preview="bat --color=always {}"'
+    alias fzvim='nvim $(fzf --preview="bat --color=always {}")'
+fi
 
 # --- Tmux ---
 alias tms='tmux attach-session -t $1'
@@ -37,21 +64,25 @@ alias tms='tmux attach-session -t $1'
 # --- AI & Sync Tools ---
 alias claude='ollama launch claude --model gemma4:31b-cloud'
 alias claw='ollama launch openclaw --model glm-5:cloud'
-alias gsync='python3 /Users/germaviter/.gemini/scripts/obsidian_sync.py'
+alias gsync='python3 $HOME/.gemini/scripts/obsidian_sync.py'
 
 # --- Development Environment (Java, Go, Python) ---
-export JAVA_HOME=$(/usr/libexec/java_home -v 25)
-export PATH=$PATH:$HOME/go/bin
-export PATH="$PATH:/opt/homebrew/lib/python3.14/site-packages/pip"
-export PATH="$PATH:/Users/germaviter/.local/bin"
+if [[ -x /usr/libexec/java_home ]]; then
+    export JAVA_HOME=$(/usr/libexec/java_home -v 25 2>/dev/null || /usr/libexec/java_home)
+fi
+export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # --- Custom Functions ---
 # Show most used commands
 cmdhist() {
-  fc -l 1 | awk '{print $2}' | sort | uniq -c | sort -nr | head -$1
+  fc -l 1 | awk '{print $2}' | sort | uniq -c | sort -nr | head -${1:-10}
 }
 
 # Count total lines of code in current directory
 linec() {
-    find . -type f -exec wc -l {} + | awk '{total += $1} END {print total}' 
+    find . -type f -not -path '*/.*' -exec wc -l {} + | awk '{total += $1} END {print total}' 
 }
+
+# Load local overrides (for private paths/secrets)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
