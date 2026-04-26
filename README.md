@@ -21,9 +21,9 @@ This repository uses a modular structure where each directory represents an appl
 ## Screenshots
 
 <p align="center">
-  <img src="assets/screenshot1.png" width="400" />
-  <img src="assets/screenshot2.png" width="400" />
-  <img src="assets/screenshot3.png" width="400" />
+  <img src="assets/fastfetch.png" width="400" />
+  <img src="assets/neovim.png" width="400" />
+  <img src="assets/yazi.png" width="400" />
 </p>
 
 ## Managed Applications
