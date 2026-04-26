@@ -28,6 +28,7 @@ log_success() { echo -e "${GREEN}  ✓${RESET} $*"; }
 log_error() { echo -e "${RED}  ✗${RESET} $*" >&2; }
 
 # ── Arguments ──────────────────────────────────────────────────────────────────
+OS_TYPE=$(uname -s)
 for arg in "$@"; do
     case $arg in
     --dry-run)
@@ -88,6 +89,12 @@ fi
 # ── Stow Packages ─────────────────────────────────────────────────────────────
 # Packages to exclude (not meant for stowing)
 EXCLUDE=("scripts" "assets" "gemini" "raycast")
+
+# Add macOS specific exclusions if on Linux
+if [[ "$OS_TYPE" == "Linux" ]]; then
+    log_info "Linux detected. Excluding macOS-specific configs..."
+    EXCLUDE+=("aerospace" "karabiner" "macmon")
+fi
 
 cd "$DOTFILES_DIR"
 
