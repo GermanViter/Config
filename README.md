@@ -35,7 +35,7 @@ This repository uses a modular structure where each directory represents an appl
 - **Terminal/Shell**: [Fish](https://fishshell.com/), [Zsh](https://www.zsh.org/), [Tmux](https://github.com/tmux/tmux)
 - **Editors**: [Neovim](https://neovim.io/) (LazyVim), [Zed](https://zed.dev/)
 - **Prompt**: [Starship](https://starship.rs/)
-- **UI/Window Management**: [Aerospace](https://github.com/nikitabobko/AeroSpace), [Ghostty](https://ghostty.org/), [Kitty](https://sw.kovidgoyal.net/kitty/)
+- **UI/Window Management**: [Aerospace](https://github.com/nikitabobko/AeroSpace), [Ghostty](https://ghostty.org/), [Kitty](https://sw.kovidgoyal.net/kitty/), [Alacritty](https://alacritty.org/)
 - **CLI Tools**: [Fastfetch](https://github.com/fastfetch-cli/fastfetch), [Bat](https://github.com/sharkdp/bat), [Yazi](https://github.com/sxyazi/yazi)
 - **Package Management**: [Homebrew](https://brew.sh/) (via Brewfile)
 - **Others**: Macmon
