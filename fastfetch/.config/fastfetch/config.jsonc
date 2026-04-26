@@ -4,6 +4,10 @@
         "source": "arch",
         "padding": {
             "top": 2
+        },
+        "color": {
+            "1": "red",
+            "2": "blue"
         }
     },
     "display": {
