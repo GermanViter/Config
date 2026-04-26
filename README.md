@@ -89,6 +89,10 @@ The `scripts/setup_symlinks.sh` script is a wrapper around `stow`:
 
 
 ## Troubleshooting
+- If you can't run the script, ensure it has execute permissions:
+  ```bash
+  chmod 777 ~/.dotfiles/scripts/setup_symlinks.sh
+  ```
 - If you encounter issues with symlinks, check the backup directory for any files that were moved.
 - Ensure you have Homebrew installed if you plan to use the `--brew` option.
 - For any application-specific issues, refer to the respective application's documentation or open an issue in this repository.
