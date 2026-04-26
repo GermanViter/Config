@@ -1,3 +1,6 @@
+# vim mode 
+bindkey -v
+
 # --- Homebrew Setup ---
 if [[ -f /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -20,7 +23,6 @@ fi
 # Source Homebrew-installed plugins dynamically
 if command -v brew >/dev/null 2>&1; then
     BREW_PREFIX=$(brew --prefix)
-    [[ -f "$BREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh" ]] && source "$BREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 fi
 
 # --- Editor ---
