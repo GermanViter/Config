@@ -1,6 +1,4 @@
 *.json
-
-
-// node node_modules
 node_modules/
 raycast/
+karabiner/
