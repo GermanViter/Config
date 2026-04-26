@@ -20,12 +20,13 @@ This repository uses a modular structure where each directory represents an appl
 
 ## Screenshots
 
-<p align="center">
-  <img src="assets/fastfetch.png" width="400" />
-  <img src="assets/neovim.png" width="400" />
-  <img src="assets/yazi.png" width="400" />
-  <img src="assets/cyber_girl.jpg" width="400" />
-</p>
+<ul align="center">
+  <li><h3>Fastfetch </h3><img src="assets/fastfetch.png" width="400" /></li>
+  <li><h3>Neovim</h3><img src="assets/neovim.png" width="400" /></li>
+  <li><h3>Yazi</h3><img src="assets/yazi.png" width="400" /></li>
+  <li><h3>Starship Prompt</h3><img src="assets/prompt.jpg" width="400" /></li>
+  <li><h3>Wallpaper</h3><img src="assets/cyber_girl.jpg" width="400" /></li>
+</ul>
 
 > [!TIP]
 > Checkout my wallpapers on [GermanViter/wallpapers](https://github.com/GermanViter/wallpapers).
