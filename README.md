@@ -1,7 +1,7 @@
 # Dotfiles
 
 Personal configuration files and environment settings for macOS and Linux. 
-> Some apps work better with MacOs like AeroSpace, Karabiner and Raycast so if you are on Linux, just delete those folders before running the script. The rest of the configs should work fine on both platforms.
+> Some apps work better with MacOs like AeroSpace so if you are on Linux, just delete those folders before running the script. The rest of the configs should work fine on both platforms.
 
 ## Contents
 - [Overview](#overview)
@@ -29,13 +29,13 @@ This repository uses a modular structure where each directory represents an appl
 
 ## Managed Applications
 
-- **Terminal/Shell**: [Fish](https://fishshell.com/), [Zsh](https://www.zsh.org/), [Tmux](https://github.com/tmux/tmux)
+- **Terminal/Shell**: [Zsh](https://www.zsh.org/), [Tmux](https://github.com/tmux/tmux)
 - **Editors**: [Neovim](https://neovim.io/) (LazyVim), [Zed](https://zed.dev/)
 - **Prompt**: [Starship](https://starship.rs/)
 - **UI/Window Management**: [Aerospace](https://github.com/nikitabobko/AeroSpace), [Ghostty](https://ghostty.org/), [Kitty](https://sw.kovidgoyal.net/kitty/)
 - **CLI Tools**: [Fastfetch](https://github.com/fastfetch-cli/fastfetch), [Bat](https://github.com/sharkdp/bat), [Yazi](https://github.com/sxyazi/yazi), [Neofetch](https://github.com/dylanaraps/neofetch)
 - **Package Management**: [Homebrew](https://brew.sh/) (via Brewfile)
-- **Others**: Macmon, Envman, JGit
+- **Others**: Macmon
 
 ## Local Overrides
 
@@ -49,6 +49,7 @@ These files are ignored by Git.
 - Homebrew (for package management)
 - Git (for cloning the repository)
 - Zsh (for shell configurations)
+- GNU Stow (for setting up the symlinks)
 
 ## Installation
 
