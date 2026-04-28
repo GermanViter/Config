@@ -2,13 +2,6 @@
 tap "anomalyco/tap"
 tap "oven-sh/bun"
 
-# macOS-only Taps
-on_macos do
-  tap "nikitabobko/tap"
-  tap "koekeishiya/formulae"
-  tap "caskroom/cask"
-end
-
 # CLI Tools (Cross-platform)
 brew "bash"
 brew "bat"
@@ -64,65 +57,3 @@ brew "zsh-syntax-highlighting"
 brew "anomalyco/tap/opencode"
 brew "oven-sh/bun/bun"
 
-# macOS-only Formulae
-on_macos do
-  brew "iproute2mac"
-  brew "macmon"
-  brew "osx-cpu-temp"
-end
-
-# Linux-only Formulae (example)
-on_linux do
-  # Add Linux specific brews here if needed
-end
-
-# macOS-only Casks
-on_macos do
-  cask "nikitabobko/tap/aerospace"
-  cask "gemini"
-  cask "ghostty"
-  cask "karabiner-elements"
-  cask "kitty"
-  cask "obsidian"
-  cask "temurin"
-  cask "warp"
-  cask "caskroom/cask/xquartz"
-  cask "zen"
-end
-
-# VS Code Extensions (Cross-platform)
-vscode "adpyke.codesnap"
-vscode "andenetalexander.vim-cheatsheet"
-vscode "catppuccin.catppuccin-vsc"
-vscode "catppuccin.catppuccin-vsc-icons"
-vscode "eamodio.gitlens"
-vscode "esbenp.prettier-vscode"
-vscode "formulahendry.auto-rename-tag"
-vscode "github.copilot-chat"
-vscode "github.remotehub"
-vscode "hediet.debug-visualizer"
-vscode "knozz.subwayame"
-vscode "ms-azuretools.vscode-containers"
-vscode "ms-mssql.data-workspace-vscode"
-vscode "ms-mssql.mssql"
-vscode "ms-mssql.sql-bindings-vscode"
-vscode "ms-mssql.sql-database-projects-vscode"
-vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vscode-remote.remote-ssh"
-vscode "ms-vscode-remote.remote-ssh-edit"
-vscode "ms-vscode.azure-repos"
-vscode "ms-vscode.remote-explorer"
-vscode "ms-vscode.remote-repositories"
-vscode "mvllow.rose-pine"
-vscode "pkief.material-icon-theme"
-vscode "redhat.java"
-vscode "ritwickdey.liveserver"
-vscode "tobias-z.vscode-harpoon"
-vscode "tonybaloney.vscode-pets"
-vscode "vscjava.vscode-gradle"
-vscode "vscjava.vscode-java-debug"
-vscode "vscjava.vscode-java-dependency"
-vscode "vscjava.vscode-java-pack"
-vscode "vscjava.vscode-java-test"
-vscode "vscjava.vscode-maven"
-vscode "vscodevim.vim"
