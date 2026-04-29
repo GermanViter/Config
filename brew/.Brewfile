@@ -1,9 +1,5 @@
-# Common Taps
-tap "anomalyco/tap"
-tap "oven-sh/bun"
 
 # CLI Tools (Cross-platform)
-brew "bash"
 brew "bat"
 brew "cmake"
 brew "cmatrix"
@@ -19,8 +15,6 @@ brew "gemini-cli"
 brew "git"
 brew "go"
 brew "openjdk"
-brew "gradle"
-brew "imagemagick"
 brew "python@3.14"
 brew "jdtls"
 brew "jp2a"
@@ -36,7 +30,6 @@ brew "neovim", args: ["HEAD"]
 brew "nginx", restart_service: :changed
 brew "nmap"
 brew "numpy"
-brew "ollama"
 brew "pipx"
 brew "pkgconf"
 brew "ripgrep"
