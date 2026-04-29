@@ -1,10 +1,17 @@
 # vim mode 
 bindkey -v
 
+
+# Lazy
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias nv='nvim'
+alias ls='ls --color=auto'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 
 # --- Homebrew Setup ---
 if [[ -f /opt/homebrew/bin/brew ]]; then
@@ -34,7 +41,6 @@ fi
 
 # --- Editor ---
 export EDITOR='nvim'
-alias vi='nvim'
 
 # --- Starship ---
 # Use the symlinked path in ~/.config for portability
