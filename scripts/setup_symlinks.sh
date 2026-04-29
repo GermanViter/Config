@@ -72,7 +72,7 @@ if $RUN_BREW; then
         log_error "Homebrew is not installed. https://brew.sh/"
     else
         echo -e "${BLUE}▸ Homebrew (Brewfile)${RESET}"
-        BREWFILE="$DOTFILES_DIR/brew/.Brewfile"
+        BREWFILE="$DOTFILES_DIR/brew/Brewfile"
         if [ -f "$BREWFILE" ]; then
             if $DRY_RUN; then
                 log_info "[dry-run] Would run: brew bundle install --file=\"$BREWFILE\""
