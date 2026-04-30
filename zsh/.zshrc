@@ -33,7 +33,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 DISABLE_AUTO_TITLE="true"
 ZSH_THEME="robbyrussell"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git sudo zsh-autosuggestions zsh-syntax-highlighting)
 export ZSH_DISABLE_COMPFIX=true
 
 # Source Oh-My-Zsh if it exists
