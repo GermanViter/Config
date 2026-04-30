@@ -15,7 +15,9 @@ if [[ -z "$THEME" ]]; then
 fi
 
 # Use the DOTFILES environment variable if set, otherwise default to ~/.dotfiles
-DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
+# Use realpath to ensure we have an absolute path
+DOTFILES_DIR="${DOTFILES:-$HOME/.dotfiles}"
+DOTFILES=$(cd "$DOTFILES_DIR" && pwd)
 
 case $THEME in
 main)
@@ -23,30 +25,36 @@ main)
     KITTY_THEME="Rosé Pine"
     NVIM_VARIANT="main"
     WALLPAPER="cyber_girl.jpg"
+    YAZI_THEME="theme-rose-pine.toml"
     ;;
 moon)
     GHOSTTY_THEME="rose pine moon"
     KITTY_THEME="Rosé Pine Moon"
     NVIM_VARIANT="moon"
     WALLPAPER="cyber_girl.jpg"
+    YAZI_THEME="theme-rose-pine.toml"
     ;;
 catppuccin)
     GHOSTTY_THEME="catppuccin mocha"
     KITTY_THEME="Catppuccin-Mocha"
     NVIM_VARIANT="catppuccin"
-    WALLPAPER="cyber_girl.jpg"
+    WALLPAPER="1-totoro.png"
+    YAZI_THEME="theme-catppuccin.toml"
     ;;
 dawn)
     GHOSTTY_THEME="rose pine dawn"
     KITTY_THEME="Rosé Pine Dawn"
     NVIM_VARIANT="dawn"
     WALLPAPER="cyber_girl.jpg"
+    YAZI_THEME="theme-rose-pine.toml"
     ;;
 black)
     GHOSTTY_THEME="Black Metal (Gorgoroth)"
     KITTY_THEME="Black Metal"
     NVIM_VARIANT="black"
-    WALLPAPER="cyber_girl.jpg"
+    #WALLPAPER="2-dot-hands.jpg"
+    WALLPAPER="1-dark-waters.jpg"
+    YAZI_THEME="theme-black.toml"
     ;;
 *)
     echo "Unknown theme: $THEME"
@@ -57,7 +65,6 @@ esac
 echo "Switching to $THEME..."
 
 # Update Ghostty
-# Ghostty reloads automatically when its config file is saved
 if [ -f "$DOTFILES/ghostty/.config/ghostty/config" ]; then
     sed -i '' "s/^theme = .*/theme = $GHOSTTY_THEME/" "$DOTFILES/ghostty/.config/ghostty/config"
     echo "✓ Ghostty updated"
@@ -66,7 +73,6 @@ else
 fi
 
 # Update Kitty
-# kitty +kitten themes updates current-theme.conf and reloads kitty
 if command -v kitty >/dev/null 2>&1; then
     kitty +kitten themes --reload-in=all "$KITTY_THEME"
     echo "✓ Kitty updated"
@@ -75,25 +81,21 @@ else
 fi
 
 # Update Neovim variant
-# This file is required in lua/plugins/colorscheme.lua
 mkdir -p "$DOTFILES/nvim/.config/nvim/lua/config"
 echo "return \"$NVIM_VARIANT\"" >"$DOTFILES/nvim/.config/nvim/lua/config/theme_variant.lua"
 echo "✓ Neovim variant updated"
 
 # Update Wallpaper
-# Use AppleScript to change wallpaper on macOS
 WALLPAPER_PATH="$DOTFILES/assets/wallpapers/$WALLPAPER"
 if [ -f "$WALLPAPER_PATH" ]; then
-    # Convert path to absolute if it's relative
-    [[ "$WALLPAPER_PATH" = /* ]] || WALLPAPER_PATH="$PWD/$WALLPAPER_PATH"
-    osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$WALLPAPER_PATH\""
+    # macOS requires absolute POSIX paths for AppleScript to work reliably
+    osascript -e "tell application \"System Events\" to tell every desktop to set picture to POSIX file \"$WALLPAPER_PATH\""
     echo "✓ Wallpaper updated"
 else
     echo "✗ Wallpaper not found at $WALLPAPER_PATH"
 fi
 
 # Update Starship
-# Symlink the correct config file to ~/.config/starship.toml
 STARSHIP_TARGET="$HOME/.config/starship.toml"
 if [ "$THEME" = "catppuccin" ]; then
     ln -sf "$DOTFILES/starship/.config/catppuccin.toml" "$STARSHIP_TARGET"
@@ -101,6 +103,16 @@ if [ "$THEME" = "catppuccin" ]; then
 else
     ln -sf "$DOTFILES/starship/.config/starship.toml" "$STARSHIP_TARGET"
     echo "✓ Starship updated (Standard)"
+fi
+
+# Update Yazi
+# Symlink the correct theme file to ~/.config/yazi/theme.toml
+YAZI_TARGET="$HOME/.config/yazi/theme.toml"
+if [ -f "$DOTFILES/yazi/.config/yazi/$YAZI_THEME" ]; then
+    ln -sf "$DOTFILES/yazi/.config/yazi/$YAZI_THEME" "$YAZI_TARGET"
+    echo "✓ Yazi updated ($YAZI_THEME)"
+else
+    echo "✗ Yazi theme file not found: $YAZI_THEME"
 fi
 
 echo "Successfully switched theme to $THEME"
