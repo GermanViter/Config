@@ -28,7 +28,7 @@ fi
 # --- Shell Configuration & Oh-My-Zsh ---
 export ZSH="$HOME/.oh-my-zsh"
 DISABLE_AUTO_TITLE="true"
-ZSH_THEME=""
+ZSH_THEME="robbyrussell"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 export ZSH_DISABLE_COMPFIX=true
 
