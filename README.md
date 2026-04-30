@@ -103,6 +103,7 @@ The `scripts/switch-theme.sh` script allows you to quickly switch between differ
 - **Kitty**: Uses the themes kitten to reload all active instances.
 - **Neovim**: Updates a local state file to switch between Rosé Pine variants or the Catppuccin plugin.
 - **Starship**: Symlinks the appropriate `.toml` config.
+- **Yazi**: Symlinks the appropriate `.toml` theme file.
 - **Wallpaper**: Changes the system wallpaper (**macOS only**).
 - If you are on Linux, you can comment all the lines mentioning `osascript` to avoid errors.
 
