@@ -84,4 +84,15 @@ else
     echo "✗ Wallpaper not found at $WALLPAPER_PATH"
 fi
 
+# Update Starship
+# Symlink the correct config file to ~/.config/starship.toml
+STARSHIP_TARGET="$HOME/.config/starship.toml"
+if [ "$THEME" = "catppuccin" ]; then
+    ln -sf "$DOTFILES/starship/.config/catppuccin.toml" "$STARSHIP_TARGET"
+    echo "✓ Starship updated (Catppuccin)"
+else
+    ln -sf "$DOTFILES/starship/.config/starship.toml" "$STARSHIP_TARGET"
+    echo "✓ Starship updated (Standard)"
+fi
+
 echo "Successfully switched theme to $THEME"
