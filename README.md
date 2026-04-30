@@ -25,7 +25,7 @@ This repository uses a modular structure where each directory represents an appl
   <li><h3>Fastfetch </h3><img src="assets/fastfetch.png" width="400" /></li>
   <li><h3>Neovim</h3><img src="assets/neovim.png" width="400" /></li>
   <li><h3>Yazi</h3><img src="assets/yazi.png" width="400" /></li>
-  <li><h3>Starship Prompt</h3><img src="assets/prompt.jpg" width="400" /></li>
+  <li><h3>Starship Prompt</h3><img src="assets/prompt.png" width="400" /></li>
   <li><h3>Wallpaper</h3><img src="assets/wallpapers/cyber_girl.jpg" width="400" /></li>
 </ul>
 
@@ -105,6 +105,9 @@ The `scripts/switch-theme.sh` script allows you to quickly switch between differ
 - **Starship**: Symlinks the appropriate `.toml` config.
 - **Wallpaper**: Changes the system wallpaper (**macOS only**).
 - If you are on Linux, you can comment all the lines mentioning `osascript` to avoid errors.
+
+### Modifying wallpapers
+It is normal that, at first the wallpaper doesn't change. Thats because I added only one in this repo. To add new wallpapers, add an image to assets/wallpapers/ and update the `WALLPAPER` variable in the `switch case` section for the theme you want. **As mentioned earlier, this feature is only for macOS users**
 
 ---
 
