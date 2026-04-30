@@ -106,5 +106,10 @@ linec() {
     find . -type f -not -path '*/.*' -exec wc -l {} + | awk '{total += $1} END {print total}' 
 }
 
+fcd() {
+    local dir
+    dir=$(find ${1:-.} -type d -not -path '*/\.*' 2>/dev/null | fzf +m) && z "$dir"
+}
+
 # Load local overrides (for private paths/secrets)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
