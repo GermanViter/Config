@@ -25,7 +25,7 @@ main)
     GHOSTTY_THEME="rose pine"
     KITTY_THEME="Rosé Pine"
     NVIM_VARIANT="main"
-    WALLPAPER="cyber_girl.jpg"
+    WALLPAPER="japanes gigital art.png"
     YAZI_THEME="theme-rose-pine.toml"
     TMUX_THEME="rose-pine-main.tmux"
     ;;
@@ -33,7 +33,7 @@ moon)
     GHOSTTY_THEME="rose pine moon"
     KITTY_THEME="Rosé Pine Moon"
     NVIM_VARIANT="moon"
-    WALLPAPER="cyber_girl.jpg"
+    WALLPAPER="japanes gigital art.png"
     YAZI_THEME="theme-rose-pine.toml"
     TMUX_THEME="rose-pine-moon.tmux"
     ;;
@@ -49,7 +49,7 @@ dawn)
     GHOSTTY_THEME="rose pine dawn"
     KITTY_THEME="Rosé Pine Dawn"
     NVIM_VARIANT="dawn"
-    WALLPAPER="cyber_girl.jpg"
+    WALLPAPER="japanes gigital art.png"
     YAZI_THEME="theme-rose-pine.toml"
     TMUX_THEME="rose-pine-dawn.tmux"
     ;;
