@@ -1,6 +1,8 @@
 # To get the default values
 # ghostty +show-config --default --docs > ~/github/dotfiles-latest/ghostty/config-default
 
+command = /bin/zsh
+
 # To get syntax highlighting in neovim, see
 # ~/github/dotfiles-latest/neovim/neobean/lua/plugins/ghostty.lua
 
@@ -22,7 +24,7 @@
 # 
 # Cycles are not allowed. If a cycle is detected, an error will be logged and
 # the configuration file will be ignored.
-theme = Gruvbox Dark
+theme = Rose Pine
 macos-titlebar-style = hidden
 
 # The command to run, usually a shell. If this is not an absolute path, it'll
@@ -105,7 +107,7 @@ window-padding-x = 7
 # window-padding-y = 6,0
 
 font-family = "0xProto Nerd Font"
-font-size = 20
+font-size = 17
 
 # Valid values:
 # 
