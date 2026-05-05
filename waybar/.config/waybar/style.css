@@ -7,11 +7,30 @@
 @define-color color4 @blue;
 @define-color color5 @mauve;
 
+@keyframes blink-update {
+	to {
+		background-color: @color4;
+	}
+}
+
+#custom-pacman {
+    background-color: @background;
+    padding-right: 10px;
+    padding-left: 10px;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+#custom-pacman.pending-updates {
+	animation-name: blink-update;
+	animation-duration: 3s;
+}
+
 * {
     font-family: 'Radio Canada Big', 'JetBrainsMono Nerd Font', 'Symbols Nerd Font', sans-serif;
     font-weight: bold;
     font-size: 14px;
-    border-radius: 19px;
+    border-radius: 5px;
     min-height: 0;
 }
 
@@ -26,6 +45,7 @@
 }
 
 
+
 window#waybar {
     margin-top: 10px;
     background-color: transparent;
@@ -37,7 +57,7 @@ window#waybar {
     transition: all 0.25s ease;
     color: @foreground;
     padding: 0 8px;
-    margin: 2px 2px;
+    margin: 8px 8px;
     min-height: 0;
     min-width: 0;
 }
@@ -58,6 +78,7 @@ window#waybar {
     background-color: @sapphire;
     color: @background;
 }
+
 
 #workspaces {
     background-color: @background;
@@ -144,6 +165,7 @@ window#waybar {
 #language,
 #network,
 #cpu,
+#custom-pacman, 
 #memory,
 #temperature,
 #clock,
